@@ -20,14 +20,14 @@ const Wrapper = styled.div`
 const Title = styled.a.attrs({
   href: '/',
 })`
-  color: var(--color-text);
+  color: var(--colors-text);
   font-size: var(--fs-sm);
   text-decoration: none;
   font-weight: var(--fw-bold);
 `
 
 const ModeSwitcher = styled.div`
-  color: var(--color-text);
+  color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;
   //font-weight: var(--fw-bold);
@@ -42,6 +42,7 @@ export const Header = () => {
   useEffect(() => {
     document.body.setAttribute('data-theme', theme)
   }, [theme])
+
   return (
     <HeaderEl>
       <Container>
