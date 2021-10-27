@@ -1,6 +1,8 @@
 import axios from 'axios'
+
 import { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+
 import { IoArrowBack } from 'react-icons/io5'
 import { searchByCountry } from '../config'
 import { Button } from '../components/Button'
@@ -19,7 +21,7 @@ export const Details = () => {
       <Button onClick={goBack}>
         <IoArrowBack /> Back
       </Button>
-      {country && <Info {...country} />}
+      {country && <Info push={push} {...country} />}
     </div>
   )
 }

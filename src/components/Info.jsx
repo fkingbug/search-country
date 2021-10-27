@@ -1,4 +1,8 @@
 import styled from 'styled-components'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
+import { filterByCode } from '../config'
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -99,6 +103,12 @@ export const Info = ({
   borders = [],
   push,
 }) => {
+  const [neighbors, setNeighbors] = useState([])
+
+  useEffect(() => {
+    if (borders.length)
+      axios.get(filterByCode(borders)).them(({ data }) => setNeighbors(data.map((e) => e.name)))
+  }, [borders])
   return (
     <Wrapper>
       <InfoImage src={flag} alt={name} />
@@ -150,8 +160,10 @@ export const Info = ({
             <span>There is no border counties</span>
           ) : (
             <TagGroup>
-              {borders.map((b) => (
-                <Tag ket={b}>{b}</Tag>
+              {neighbors.map((b) => (
+                <Tag ket={b} onClock={() => push(`/country/${b}`)}>
+                  {b}
+                </Tag>
               ))}
             </TagGroup>
           )}
